@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  star_rating: 1
+  text_rating: MyText
+  is_favourite: false
+  user: 
+  cheese: 
+
+two:
+  star_rating: 1
+  text_rating: MyText
+  is_favourite: false
+  user: 
+  cheese: 

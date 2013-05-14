@@ -1,0 +1,16 @@
+@import "bootstrap";
+body { padding-top: 60px; }
+@import "bootstrap-responsive";
+
+.rating-form textarea {
+  height: 120px;
+}
+
+.portfolio {
+  margin: 0;
+}
+
+.welcome {
+  padding: 10px 15px 10px;
+  text-shadow: 0 1px 0 rgb(255, 255, 255);
+}

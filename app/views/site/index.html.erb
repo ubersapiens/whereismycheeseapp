@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="span9">
+    <div id="cheese_list"></div>
+  </div>
+
+
+  <div class="span3 rating-form">
+    <h2>Rate a cheese!</h2>
+    <%= form_for @rating, :remote => true do |f| %>
+      <p>
+        <%= f.label :cheese %><br>
+        <%= f.select :cheese, (Cheese.all - @cheeses).map {|c| [c.name, c.id] } %>
+      </p>
+      <p>
+        <%= f.label :text_rating %><br>
+        <%= f.text_area :text_rating, :placeholder => "Rate your cheese!" %>
+      </p>
+      <p>
+        <%= f.label :star_rating %><br>
+        <%= f.select :star_rating, [1,2,3,4,5] %>
+      </p>
+      <p>
+        <%= f.label :is_favourite %><br>
+        <%= f.check_box :is_favourite %>
+      </p>
+      <p><%= f.submit "Rate it!" %></p>
+    <% end %>
+  </div>
+</div>

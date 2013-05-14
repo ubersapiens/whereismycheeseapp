@@ -1,0 +1,41 @@
+<% if @cheeses.empty? %>
+  <%= render :partial => 'empty' %>
+<% else %>
+  <div class="row">
+    <div class="span9 text-right">
+      Order by:
+      <select id="cheese_selector">
+        <option value="name"<%= if (@order == 'name') then 'selected' end%>>Name of cheese</option>
+        <option value="textures.name"<%= if (@order == 'textures.name') then 'selected' end%>>Texture</option>
+        <option value="milk_types.name"<%= if (@order == 'milk_types.name') then 'selected' end%>>Milk type</option>
+        <option value="countries.name"<%= if (@order == 'countries.name') then 'selected' end%>>Country of origin</option>
+      </select>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <ul class="thumbnails portfolio">
+    <% @cheeses.each do |cheese| %>
+      <%
+        if @current_user
+          rating = cheese.ratings.find_by_user_id(@current_user).star_rating
+        else
+          rating = cheese.average_rating
+        end
+      %>
+      <li class="span3">
+        <div class="thumbnail" style="height: 200px; overflow: hidden">
+          <%= link_to image_tag(cheese.image_url), cheese_detail_path(cheese) %>
+        </div>
+        <div style="height: 40px">
+          <strong><%= cheese.name %>:
+            <%= "Average" unless @current_user %>
+            <%= pluralize(rating, "star") if rating %>
+          </strong><br>
+          <%= cheese.texture.name %> <%= cheese.milk_type.name.downcase %>
+          milk from <%= cheese.country.name %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

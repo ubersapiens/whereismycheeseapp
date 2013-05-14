@@ -1,0 +1,15 @@
+<%= link_to "Stinky Cheese", root_path, :class => 'brand' %>
+<ul class="nav pull-right">
+  <% if current_user %>
+    <li>
+      <div class="welcome">
+        Welcome to 
+        <%= content_tag('em', "Stinky Cheese") %>,
+        <%= current_user.first_name %>!
+      </div>
+    </li>
+    <li>
+      <%= link_to 'Log out', logout_url %>
+    </li>
+  <% end %>
+</ul>
